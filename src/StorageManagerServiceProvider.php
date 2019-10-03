@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace HgaCreative\StorageManager;
 
-use HgaCreative\StorageManager\Console\AccountantContextResolverCommand;
-use HgaCreative\StorageManager\Console\AccountantIpAddressResolverCommand;
-use HgaCreative\StorageManager\Console\AccountantUrlResolverCommand;
-use HgaCreative\StorageManager\Console\AccountantUserAgentResolverCommand;
-use HgaCreative\StorageManager\Console\AccountantUserResolverCommand;
+use HgaCreative\StorageManager\Console\StorageManagerContextResolverCommand;
+use HgaCreative\StorageManager\Console\StorageManagerIpAddressResolverCommand;
+use HgaCreative\StorageManager\Console\StorageManagerUrlResolverCommand;
+use HgaCreative\StorageManager\Console\StorageManagerUserAgentResolverCommand;
+use HgaCreative\StorageManager\Console\StorageManagerUserResolverCommand;
 use HgaCreative\StorageManager\Contracts\StorageManager;
 use Illuminate\Support\ServiceProvider;
 
@@ -28,7 +28,7 @@ class StorageManagerServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 $config => base_path('config/storageManager.php'),
-            ], 'accountant-configuration');
+            ], 'storage-manager-configuration');
 
             $migrations = __DIR__.'/../database/migrations/';
 
@@ -46,11 +46,11 @@ class StorageManagerServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->commands([
-            AccountantContextResolverCommand::class,
-            AccountantIpAddressResolverCommand::class,
-            AccountantUrlResolverCommand::class,
-            AccountantUserAgentResolverCommand::class,
-            AccountantUserResolverCommand::class,
+            StorageManagerContextResolverCommand::class,
+            StorageManagerIpAddressResolverCommand::class,
+            StorageManagerUrlResolverCommand::class,
+            StorageManagerUserAgentResolverCommand::class,
+            StorageManagerUserResolverCommand::class,
         ]);
 
         $this->app->singleton(StorageManager::class, function ($app) {
