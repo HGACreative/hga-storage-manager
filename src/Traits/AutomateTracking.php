@@ -3,6 +3,7 @@
 namespace HgaCreative\StorageManager\Traits;
 
 use Exception;
+use Illuminate\Support\Facades\Config;
 
 /**
  * Automate the assignment of a uuid as the primary key
@@ -19,6 +20,9 @@ trait AutomateTracking {
 	 */
 	protected static function bootAutomateTracking()
 	{
+		if(!Config::get('storageManager.tracking')){
+			return;
+		}
 		/**
 		 * When creating a new entry for a model automatically
 		 * generate fill in tracking details
