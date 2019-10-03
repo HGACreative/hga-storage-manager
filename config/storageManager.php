@@ -17,15 +17,14 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Recording contexts
+    | Tracking user details
     |--------------------------------------------------------------------------
     |
-    | Define the contexts in which activity should take place.
+    | Define if tracking of user details should take place or not
     |
     */
 
-    'contexts' => HgaCreative\StorageManager\Context::WEB,
-
+    'tracking' => true,
 
 
     /*
