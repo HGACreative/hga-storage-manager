@@ -4,20 +4,11 @@ declare(strict_types=1);
 
 namespace HgaCreative\StorageManager;
 
-use Illuminate\Support\Manager;
 use Illuminate\Support\Facades\Storage;
 use HgaCreative\StorageManager\Models\FileUpload;
 
-class StorageManager extends Manager implements Contracts\StorageManager
+class StorageManager implements Contracts\StorageManager
 {
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getDefaultDriver(): string
-    {
-        return 'database';
-    }
 
     /**
      * {@inheritdoc}
@@ -26,7 +17,7 @@ class StorageManager extends Manager implements Contracts\StorageManager
     {
         try{
 
-            if ($this->app()->runningUnitTests() || $this->app()->runningInConsole()) {
+            if (app()->runningUnitTests() || app()->runningInConsole()) {
                 $tag = 'tests/' . $tag;
             }
 
@@ -38,8 +29,8 @@ class StorageManager extends Manager implements Contracts\StorageManager
                 'mime_type'             => $file->getClientMimeType(),
                 'size'                  => $file->getClientSize(),
             ]);
+
         } catch(\Exception $e) {
-            dd($e->getMessage());
             return null;
         }
     }

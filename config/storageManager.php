@@ -17,24 +17,6 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Resolver Implementations
-    |--------------------------------------------------------------------------
-    |
-    | Define the Context, IP Address, URL, User Agent and User resolver
-    | implementations.
-    |
-    */
-
-    'resolvers' => [
-        'context'    => HgaCreative\StorageManager\Resolvers\ContextResolver::class,
-        'ip_address' => HgaCreative\StorageManager\Resolvers\IpAddressResolver::class,
-        'url'        => HgaCreative\StorageManager\Resolvers\UrlResolver::class,
-        'user_agent' => HgaCreative\StorageManager\Resolvers\UserAgentResolver::class,
-        'user'       => HgaCreative\StorageManager\Resolvers\UserResolver::class,
-    ],
-
-    /*
-    |--------------------------------------------------------------------------
     | Recording contexts
     |--------------------------------------------------------------------------
     |

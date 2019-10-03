@@ -5,9 +5,12 @@ declare(strict_types=1);
 namespace HgaCreative\StorageManager\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use HgaCreative\StorageManager\Traits\AutomateTracking;
 
 class FileUpload extends Model
 {
+    use AutomateTracking;
+    
     /**
      * The table this model utilises
      */

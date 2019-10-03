@@ -45,14 +45,6 @@ class StorageManagerServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->commands([
-            StorageManagerContextResolverCommand::class,
-            StorageManagerIpAddressResolverCommand::class,
-            StorageManagerUrlResolverCommand::class,
-            StorageManagerUserAgentResolverCommand::class,
-            StorageManagerUserResolverCommand::class,
-        ]);
-
         $this->app->singleton(StorageManager::class, function ($app) {
             return new \HgaCreative\StorageManager\StorageManager($app);
         });
