@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace HgaCreative\StorageManager\Contracts;
 
+use HgaCreative\StorageManager\Models\FileUpload;
+
 interface StorageManager
 {
 
@@ -21,6 +23,6 @@ interface StorageManager
      * @param  string $key aws s3 key
      * @return bool        true if successfull deletion
      */
-    public static function deleteFile($key): bool;
+    public static function deleteFile(String $key): bool;
 
 }

@@ -15,7 +15,7 @@ class UserResolver implements \HgaCreative\StorageManager\Contracts\UserResolver
      */
     public static function resolve(): ?Identifiable
     {
-        foreach (Config::get('accountant.user.guards') as $guard) {
+        foreach (Config::get('storage-manager.user.guards') as $guard) {
             if ($user = Auth::guard($guard)->user()) {
                 return $user;
             }
