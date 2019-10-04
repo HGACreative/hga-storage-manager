@@ -23,6 +23,7 @@ FileUpload model is returned if successful, else null is returned.
 Deletes the file from the database and from S3
 
 **Key**
+
 The key is stored within the database, simple grab the one you want and use as such.
 
 The key is made up of the following: *directory/image.jpg*
