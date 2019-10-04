@@ -28,13 +28,13 @@ class StorageManagerServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 $config => base_path('config/storageManager.php'),
-            ], 'storage-manager-configuration');
+            ], 'storageManager-configuration');
 
             $migrations = __DIR__.'/../database/migrations/';
 
             $this->publishes([
                 $migrations => database_path('migrations'),
-            ], 'storage-manager-migrations');
+            ], 'storageManager-migrations');
         }
     }
 
