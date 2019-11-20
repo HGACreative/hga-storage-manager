@@ -57,3 +57,17 @@ The key is made up of the following: *directory/image.jpg*
                 $table->increments('id');
                 ...
                 ...
+If you're using bigIncrements, please change the package's migration foreign user_id type to bigInteger.
+
+**Extending FileUpload Model**
+Create a FileUpload model within your Models folder and simply extend the package's model. You may now extend it's functionality.
+
+     <?php
+        
+        namespace App\Models;
+        use HgaCreative\StorageManager\Models\FileUpload as HgaFileUpload;
+        
+        class FileUpload extends HgaFileUpload
+        {
+            //
+        }
