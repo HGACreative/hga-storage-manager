@@ -61,6 +61,7 @@ If you're using bigIncrements, please change the package's migration foreign use
 
 
 **Extending FileUpload Model**
+
 Create a FileUpload model within your Models folder and simply extend the package's model. You may now extend it's functionality.
 
      <?php
