@@ -1,3 +1,4 @@
+
 # HGA Storage Manager
 
 Used for managing files on S3, via the storage manager facade you can easily upload and delete files as necessary.
@@ -37,7 +38,7 @@ Deletes the file from the database and from S3
 
 The key is stored within the database, simply grab the one you want and use as such.
 
-The key is made up of the following: *directory/image.jpg*
+An example of a key: *directory/sub_directory/image.jpg*
 
 
 **Database**
@@ -62,7 +63,7 @@ If you're using bigIncrements, please change the package's migration foreign use
 
 **Extending FileUpload Model**
 
-Create a FileUpload model within your Models folder and simply extend the package's model. You may now extend it's functionality.
+Create a FileUpload model within your Models folder and simply extend the package's model. You may now extend Its functionality.
 
      <?php
         
@@ -73,3 +74,17 @@ Create a FileUpload model within your Models folder and simply extend the packag
         {
             //
         }
+
+**Routes**
+
+Utilise the following routes to upload and delete files from S3:
+
+
+| Method | URI | Name |
+|--|--| --| -- |
+| POST | api/utilities/file-upload | api.utilities.file-upload.store |
+| DELETE | api/utilities/file-upload | api.utilities.file-upload.destroy |
+
+
+- store takes a file and tag(nullable) to have it uploaded and returned a JSON response.
+- destroy takes a key to delete a file and returns a JSON response
