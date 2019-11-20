@@ -36,8 +36,7 @@ class StorageManagerServiceProvider extends ServiceProvider
             ], 'storageManager-migrations');
         }
 
-        require __DIR__ . '/Http/routes.php';
-
+        $this->loadRoutesFrom(__DIR__ . '/Http/routes.php');
     }
 
     /**

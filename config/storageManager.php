@@ -20,7 +20,7 @@ return [
     | Tracking user details
     |--------------------------------------------------------------------------
     |
-    | Define if tracking of user details should take place or not
+    | Define if the package should track the user personal details such as ip address
     |
     */
 
