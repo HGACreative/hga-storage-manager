@@ -6,6 +6,8 @@ namespace HgaCreative\StorageManager;
 
 use HgaCreative\StorageManager\Contracts\StorageManager;
 use Illuminate\Support\ServiceProvider;
+use HgaCreative\StorageManager\Models\FileUpload;
+use HgaCreative\StorageManager\Observers\FileUploadObserver;
 
 class StorageManagerServiceProvider extends ServiceProvider
 {
@@ -20,6 +22,8 @@ class StorageManagerServiceProvider extends ServiceProvider
 
         $this->mergeConfigFrom($config, 'storageManager');
 
+        FileUpload::observe(FileUploadObserver::class);
+
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 $config => base_path('config/storageManager.php'),
@@ -31,6 +35,9 @@ class StorageManagerServiceProvider extends ServiceProvider
                 $migrations => database_path('migrations'),
             ], 'storageManager-migrations');
         }
+
+        require __DIR__ . '/Http/routes.php';
+
     }
 
     /**
