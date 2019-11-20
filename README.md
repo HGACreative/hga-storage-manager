@@ -81,7 +81,7 @@ Utilise the following routes to upload and delete files from S3:
 
 
 | Method | URI | Name |
-|--|--| --| -- |
+|--|--|--|--|
 | POST | api/utilities/file-upload | api.utilities.file-upload.store |
 | DELETE | api/utilities/file-upload | api.utilities.file-upload.destroy |
 
