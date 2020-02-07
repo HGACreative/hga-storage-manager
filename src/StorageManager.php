@@ -24,7 +24,7 @@ class StorageManager implements Contracts\StorageManager
             return FileUpload::create([
                 'original_file_name'    => $file->getClientOriginalName(),
                 'key'                   => $key = $file->store(($tag ? $tag  : 'other'), 's3'),
-                'url'                   => Storage::disk('s3')->url($key),
+                'url'                   => Storage::disk(env('HGA_STORAGE_DISK', 's3'))->url($key),
                 'extension'             => $file->clientExtension(),
                 'mime_type'             => $file->getClientMimeType(),
                 'size'                  => $file->getClientSize(),
