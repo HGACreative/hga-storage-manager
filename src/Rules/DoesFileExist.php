@@ -23,7 +23,7 @@ class DoesFileExist implements Rule
      */
     public function passes($attribute, $value)
     {
-        return Storage::disk('s3')->exists($value);
+        return Storage::disk(env('HGA_STORAGE_DISK', 's3')->exists($value);
     }
 
     /**
