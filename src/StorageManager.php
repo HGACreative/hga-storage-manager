@@ -23,11 +23,11 @@ class StorageManager implements Contracts\StorageManager
 
             return FileUpload::create([
                 'original_file_name'    => $file->getClientOriginalName(),
-                'key'                   => $key = $file->store(($tag ? $tag  : 'other'), env('HGA_STORAGE_DISK', 's3'),
+                'key'                   => $key = $file->store(($tag ? $tag  : 'other'), env('HGA_STORAGE_DISK', 's3')),
                 'url'                   => Storage::disk(env('HGA_STORAGE_DISK', 's3'))->url($key),
                 'extension'             => $file->clientExtension(),
                 'mime_type'             => $file->getClientMimeType(),
-                'size'                  => $file->getClientSize(),
+                'size'                  => $file->getSize(),
             ]);
 
         } catch(\Exception $e) {
@@ -40,7 +40,7 @@ class StorageManager implements Contracts\StorageManager
      */
     public static function deleteFile(string $key): bool
     {
-        if(Storage::disk(env('HGA_STORAGE_DISK', 's3')->delete($key) && FileUpload::where('key', $key)->delete()){
+        if(Storage::disk(env('HGA_STORAGE_DISK', 's3'))->delete($key) && FileUpload::where('key', $key)->delete()){
             return true;
         }
         return false;
