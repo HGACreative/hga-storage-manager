@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HgaCreative\StorageManager\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Config;
 
 class UploadFile extends FormRequest
 {
@@ -25,8 +26,9 @@ class UploadFile extends FormRequest
      */
     public function rules()
     {
+        $maxFileSize = Config::get('storageManager.max_file_size');
         return [
-            'file' => 'required|file|max:8192',
+            'file' => 'required|file|max:' . $maxFileSize,
             'tag' => 'nullable|min:3|max:50',
         ];
     }
@@ -41,7 +43,7 @@ class UploadFile extends FormRequest
         return [
             'file.required' => 'A file is required',
             'file.file' => 'The uploaded item is not a file',
-            'file.max' => 'Your file cannot exceed 8MB'
+            'file.max' => 'Maximum file upload size exceeded'
         ];
     }
 }
